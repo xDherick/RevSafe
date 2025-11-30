@@ -48,7 +48,7 @@ async function fetchBotResponse(chatHistory, systemPrompt) {
 // LÓGICA PRINCIPAL DA APLICAÇÃO
 // =================================================================================
 
-// Lista de Produtos (8 itens: 4 originais + 4 concorrentes)
+// Lista de Produtos
 const PRODUCTS = [
   // --- CELULARES ---
   {
@@ -297,27 +297,21 @@ window.navigate = navigate;
 // NOVA FUNÇÃO: INICIAR COMPARAÇÃO COM IA
 // ---------------------------------------------------------
 function startAiComparison() {
-  // 1. Pega os produtos completos baseados nos IDs salvos em state.compare
   const itemsToCompare = state.compare
     .map((id) => PRODUCTS.find((p) => p.id === id))
     .filter(Boolean);
 
-  // Precisa de pelo menos 2 produtos
   if (itemsToCompare.length < 2) {
     alert("Selecione pelo menos 2 produtos para comparar.");
     return;
   }
 
-  // 2. Cria o prompt com os nomes
   const productNames = itemsToCompare.map((p) => p.title);
   const prompt = `Compare detalhadamente: ${productNames.join(
     " vs "
   )}. Foque em segurança, custo-benefício e impacto ambiental. Qual é a melhor escolha?`;
 
-  // 3. Adiciona a mensagem do usuário ao histórico do chat
   state.chatHistory.push({ role: "user", text: prompt });
-
-  // 4. Navega para a tela de chat (o chat detectará a nova mensagem e responderá)
   navigate("#/chat");
 }
 window.startAiComparison = startAiComparison;
@@ -791,27 +785,57 @@ function renderProfile() {
   document.getElementById("logout").addEventListener("click", logout);
 }
 
+// =================================================================
+// TELA DE LOGIN ATUALIZADA (IGUAL IMAGEM)
+// =================================================================
 function renderLogin() {
   app.innerHTML = `
     <main class="login-screen">
-      <div class="center"><div class="logo">RS</div><h1 style="margin-top:10px">RevSafe</h1></div>
+      <div class="center">
+        <div class="logo">RS</div>
+        <h1>RevSafe</h1>
+      </div>
       <form id="loginForm" class="login-form">
         <h2>Bem-vindo</h2>
-        <input type="email" id="email" value="admin@revsafe.com">
-        <input type="password" id="password" value="1234">
-        <button type="submit" class="btn-primary">Entrar</button>
+        <p>Entre para continuar</p>
+        
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" placeholder="Digite seu e-mail" value="admin@revsafe.com" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="password">Senha</label>
+          <input type="password" id="password" placeholder="Digite sua senha" value="1234" required>
+        </div>
+        
+        <button type="submit" class="btn-primary login-btn">Entrar</button>
+        
+        <p class="register-text">
+          Não tem conta?
+          <a href="#">Cadastre-se</a>
+        </p>
+        <p class="msg-erro" id="msgErro"></p>
       </form>
-    </main>`;
-  document.getElementById("loginForm").addEventListener("submit", (e) => {
+    </main>
+  `;
+
+  const form = document.getElementById("loginForm");
+  const msgErro = document.getElementById("msgErro");
+
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
     const email = document.getElementById("email").value;
-    const pass = document.getElementById("password").value;
-    if (email === "admin@revsafe.com" && pass === "1234") {
-      state.user = { name: "Admin", email: email };
+    const senha = document.getElementById("password").value;
+    if (email === "admin@revsafe.com" && senha === "1234") {
+      state.user = { name: "Admin", email: "admin@revsafe.com" };
       state.isLoggedIn = true;
+      alert("Login bem-sucedido!");
       navigate("#/home");
       router();
-    } else alert("Erro no login");
+    } else {
+      msgErro.textContent = "E-mail ou senha inválidos!";
+    }
   });
 }
 

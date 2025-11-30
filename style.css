@@ -8,7 +8,7 @@
   --card-color: #38393b;
   --text-primary: #ffffff;
   --text-muted: #9aa0a6;
-  --accent-blue: #0b6df0;
+  --accent-blue: #0b6df0; /* Azul vibrante da imagem */
   --accent-green: #0fbf8e;
   --white: #ffffff;
   --glass-color: rgba(255, 255, 255, 0.04);
@@ -71,18 +71,22 @@ header.appbar {
   padding: 16px 14px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
 }
+
+/* LOGO ESTILO IMAGEM */
 .logo {
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
-  background: var(--logo-gradient);
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: var(--accent-blue);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--white);
-  font-size: 16px;
+  font-size: 18px;
+  box-shadow: 0 4px 12px rgba(11, 109, 240, 0.3);
 }
+
 .app-title {
   font-weight: 700;
   font-size: 16px;
@@ -93,13 +97,10 @@ header.appbar {
   color: var(--text-muted);
   margin-top: 2px;
 }
-
 .content [style*="font-weight:800"],
 .content [style*="font-weight: 800"] {
   color: var(--text-primary);
 }
-
-/* content area */
 .content {
   padding: 14px;
   min-height: 640px;
@@ -186,7 +187,6 @@ button.ghost {
   color: var(--text-muted);
   cursor: pointer;
 }
-
 #theme-toggle {
   margin: 0;
   padding: 8px;
@@ -239,7 +239,6 @@ button.ghost {
   box-shadow: 0 8px 22px rgba(11, 109, 240, 0.12);
   color: var(--white);
 }
-
 .grid {
   display: flex;
   flex-direction: column;
@@ -466,94 +465,7 @@ a.link {
   font-weight: 700;
 }
 
-/* Login screen styles */
-.login-screen {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem 1.5rem;
-  min-height: 100%;
-  width: 100%;
-}
-.login-screen h1 {
-  font-size: 2rem;
-  color: var(--text-primary);
-  margin-bottom: 2rem;
-  text-align: center;
-}
-.login-form {
-  background: var(--card-color);
-  width: 100%;
-  max-width: 360px;
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  color: var(--text-primary);
-}
-.login-form h2 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-  text-align: center;
-  color: var(--text-primary);
-}
-.login-form p {
-  text-align: center;
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  margin-bottom: 1.5rem;
-}
-.form-group {
-  margin-bottom: 1rem;
-}
-.form-group label {
-  font-size: 0.85rem;
-  font-weight: bold;
-  display: block;
-  margin-bottom: 0.3rem;
-  color: var(--text-muted);
-}
-.form-group input {
-  width: 100%;
-  padding: 0.9rem;
-  border: 1px solid var(--border-color);
-  background: transparent;
-  color: var(--text-primary);
-  border-radius: 8px;
-  font-size: 1rem;
-}
-.btn-primary {
-  width: 100%;
-  padding: 0.9rem;
-  background: linear-gradient(90deg, var(--accent-blue), #0061d6);
-  color: var(--white);
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.3s;
-  margin-top: 1rem;
-}
-.register-text {
-  text-align: center;
-  margin-top: 1.2rem;
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
-.register-text a {
-  color: var(--accent-blue);
-  text-decoration: none;
-  font-weight: bold;
-}
-.msg-erro {
-  color: var(--accent-green);
-  font-size: 0.9rem;
-  text-align: center;
-  margin-top: 0.8rem;
-}
-
-/* desktop override */
+/* Desktop override */
 @media (min-width: 900px) {
   body {
     align-items: center;
@@ -563,33 +475,142 @@ a.link {
   }
 }
 
+/* =========================================================
+   ESTILOS DA TELA DE LOGIN (CORRIGIDOS CONFORME IMAGEM)
+   ========================================================= */
+.login-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1.5rem;
+  min-height: 100%;
+  width: 100%;
+  background: var(--bg-color);
+}
+
+.login-screen h1 {
+  font-size: 2rem;
+  color: var(--white);
+  margin: 1.5rem 0 2.5rem 0; /* Espaçamento igual imagem */
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.login-form {
+  background: var(--card-color); /* Fundo cinza médio */
+  width: 100%;
+  max-width: 360px;
+  padding: 2rem;
+  border-radius: 16px;
+  /* box-shadow: removed slightly to match flat look of image */
+}
+
+.login-form h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  color: var(--white);
+  font-weight: 800;
+}
+
+.login-form p {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-muted);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 1rem;
+  /* CORREÇÃO: Fundo mais escuro no input para dar contraste */
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--white);
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-top: 0; /* Remove margem padrão */
+}
+
+.form-group input:focus {
+  border-color: var(--accent-blue);
+  outline: none;
+}
+
+.btn-primary.login-btn {
+  width: 100%;
+  padding: 1rem;
+  background: var(--accent-blue); /* Azul sólido vibrante */
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: opacity 0.2s;
+}
+
+.btn-primary.login-btn:hover {
+  opacity: 0.9;
+}
+
+.register-text {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.register-text a {
+  color: var(--accent-blue);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.msg-erro {
+  color: var(--accent-green);
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 0.8rem;
+}
+
 /* =========================================
    NOVO ESTILO: Botão de Comparar Chamativo
    ========================================= */
 .btn-flashy {
-  /* Tamanho Padrão (Página de Produto / Botão Grande na Comparação) */
   font-size: 1.2rem;
   padding: 16px 24px;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 1px;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   background: rgba(15, 191, 142, 0.05);
   border: 2px solid var(--accent-green);
   color: var(--accent-green);
   border-radius: 12px;
   cursor: pointer;
-
   box-shadow: 0 0 15px rgba(15, 191, 142, 0.3);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   animation: neon-pulse 2s infinite;
 }
 
-/* Variação Menor para Lista de Busca (Ajuste Mobile) */
 .btn-flashy.small {
   font-size: 0.75rem;
   padding: 6px 10px;
@@ -599,7 +620,6 @@ a.link {
   min-height: 36px;
 }
 
-/* Estado Hover */
 .btn-flashy:hover {
   background: var(--accent-green);
   color: #121212;
@@ -608,7 +628,6 @@ a.link {
   border-color: var(--accent-green);
 }
 
-/* Estado Desativado (Disabled) */
 .btn-flashy:disabled {
   filter: grayscale(100%);
   opacity: 0.4;
@@ -632,7 +651,6 @@ a.link {
   }
 }
 
-/* Slot Vazio no Comparador (Selecionar mais um item) */
 .empty-card-slot {
   min-height: 160px;
   border: 2px dashed var(--border-color);
