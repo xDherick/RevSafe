@@ -1,7 +1,7 @@
 // =================================================================================
 // LÓGICA DA API
 // =================================================================================
-const GEMINI_API_KEY = "AIzaSyDZvYL9cIwSx9V7WYNvkdQNdFkZNDrTrJU"; // ATENÇÃO: COLOQUE SUA CHAVE AQUI
+const GEMINI_API_KEY = "AIzaSyAY-2z0KnFVCFMeaRhsIE2J_pGVTSDJxHM"; // ATENÇÃO: COLOQUE SUA CHAVE AQUI
 
 // CORREÇÃO: Alterado para 'gemini-1.5-flash', que é o modelo estável mais recente
 const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
